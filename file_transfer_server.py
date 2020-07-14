@@ -12,6 +12,6 @@ except TimeoutError:
     print("Heavy network congestion detected")
     exit(0)
 
-sock.write("10"*8192)
+sock.write("0"*8192)
 sock.close()
 print("server application terminating")

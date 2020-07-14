@@ -88,7 +88,7 @@ class RDTSocket:
         def async_read():
 
             for _ in range(10):
-                self._socket.settimeout(60)
+                self._socket.settimeout(10)
                 try:
                     data, endpoint = self._socket.recvfrom(self._PACKET_SIZE)
                 except socket.timeout:
@@ -121,7 +121,7 @@ class RDTSocket:
     def _read(self):
 
         syn_received = False
-        while True:
+        while self.connected():
             try:
                 data, addr = self._socket.recvfrom(self._PACKET_SIZE)
             except socket.timeout:
@@ -213,10 +213,7 @@ class RDTSocket:
 
     def _write(self):
 
-        while self._write_buffer:
-            if not self.connected():
-                print("Other party has closed the connection.")
-                break
+        while self._write_buffer and self.connected():
             seq = next(iter(self._write_buffer))
             packet, t0 = self._write_buffer.pop(seq)
             if t0 - t0 != 0:
