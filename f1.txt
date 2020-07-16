@@ -1,3 +1,10 @@
 Hello, How are you all?
 This is a test string
 I hope this works
+More test Strings
+Rikei Todoshi, Smash Lord 2051
+Good Morning, Hello World, this is the sixth sentence
+I'm out of test strings
+Laptop charge: 52%
+This is the penultimate line
+this is the final line. Yay!
